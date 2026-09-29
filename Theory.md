@@ -119,3 +119,67 @@ Pressable = an interactive container that responds to user presses, commonly thr
 
 Are Expo and React Native the same thing?
 No. Expo uses/works with React Native and provides tooling around React Native development.
+
+What is Stack Navigation?
+
+Think of a stack of cards.
+When you open a new screen, it is placed on top of the previous screen.
+
+What are Tabs?
+
+Tabs let users switch between the main sections of an application.
+
+Stack
+Stack represents a navigation journey:
+Home
+ ↓
+Products
+ ↓
+Product Details
+You go deeper into the application and can go back.
+
+Tabs
+Tabs represent main sections:
+
+You're switching between major areas rather than simply going deeper.
+
+A real app often uses both.
+
+For Product App, conceptually:
+          Bottom Tabs
+              │
+     ┌────────┼────────┐
+     ↓        ↓        ↓
+   Home    Products   Profile
+              │
+              ↓
+       Product Details
+
+Folder structure
+Expo Router commonly uses a route group for tabs:
+
+app/
+├── _layout.tsx
+│
+└── (tabs)/
+    ├── _layout.tsx
+    ├── index.tsx
+    ├── products.tsx
+    └── profile.tsx
+
+app/(tabs)/_layout.tsx
+
+import { Tabs } from "expo-router";
+
+export default function TabLayout() {
+  return <Tabs />;
+}
+
+What does (tabs) mean?
+Notice the parentheses:
+
+route.push
+
+route.replace
+
+route.back()

@@ -1,29 +1,23 @@
-import { Text, View, StyleSheet } from "react-native";
-import { Link } from "expo-router";
-
-const styles = StyleSheet.create({
-  container: {
-    padding: 20,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: "bold",
-  }
-})
+import { View, Text, Button } from "react-native";
+import { router } from "expo-router";
 
 export default function Home() {
-  console.log("Home screen rendered");
   return (
-    <View style={styles.container}>
-      <Text>Home</Text>
+    <View>
+      <Text>Home Screen</Text>
 
-      <Link
-        href="/profile"
-        style={styles.title}
-      >
-        Profile
-      </Link>
-
+      <Button
+        title="View Products"
+        onPress={() => router.push("/products")}
+      />
+      <Button
+        title="View Categories"
+        onPress={() => router.push("/categories")}
+      />
+      <Button
+        title="View Profile"
+        onPress={() => router.push("/profile")}
+      />
     </View>
   );
 }
