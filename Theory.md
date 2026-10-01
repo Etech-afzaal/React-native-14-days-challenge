@@ -183,3 +183,69 @@ route.push
 route.replace
 
 route.back()
+
+
+
+useEffect() is used when a component needs to perform a side effect - something that happens as a result of rendering/state changes but isn't simply calculating the UI
+Fetching API data
+Updating something when state changes
+Starting a timer
+Adding/removing event listeners
+Running logic when a screen/component first appears
+
+useEffect(() => {
+  // side-effect logic
+}, []);
+
+
+
+useMemo — Basic Understanding
+
+Calculate a value and remember the result until one of its dependencies changes.
+
+const total - useMemo(() => {
+  return cart.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0
+  );
+}, [cart]);
+
+
+useCallback
+
+useMemo memoizes a calculated value. useCallback memoizes a function
+
+
+==================================
+
+Step 1 — Create Context
+
+context is a way to share data between components without prop drilling.
+
+Props drilling:Passing props manually through every component in the hierarchy, even if intermediate components don't use the data. 
+
+const CartContext = createContext(null);
+
+Think:
+"I'm creating a place through which cart-related data can be shared."
+
+Step 2 — Provide the data
+A provider makes the data available to components inside it.
+<CartContext.Provider value={/* cart data */}>
+  <App />
+</CartContext.Provider>
+
+Step 3 — Consume the Context
+A component that needs the shared data can read the context.
+const cart = useContext(CartContext);
+
+
+clients components are not async // Next JS concept
+
+1. Rest APIs
+
+
+const response = await axios.get("https://example.com/products");
+const data = response.data;
+A key difference is that Axios already gives you parsed response data in:
+response.data
